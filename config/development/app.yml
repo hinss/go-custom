@@ -1,0 +1,15 @@
+address: "0.0.0.0:8888"
+read_timeout: 10
+write_timeout: 600
+dev:
+  # proxy port
+  port: 8087
+  host: 0.0.0.0
+  # 调试模式后端port、等待文件刷新时间、监控目录
+  backend:
+    port: 8072
+    refresh_time: 30
+    monitor_folder:
+  # 调试模式前端端port
+  frontend:
+    port: 8071

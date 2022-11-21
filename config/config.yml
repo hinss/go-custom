@@ -1,0 +1,44 @@
+app:
+  address: "0.0.0.0:8888"
+  read_timeout: 10
+  write_timeout: 600
+  dev:
+    # proxy port
+    port: 8087
+    # 调试模式后端port、等待文件刷新时间、监控目录
+    backend:
+      port: 8072
+      refresh_time: 3
+      monitor_folder:
+    # 调试模式前端端port
+    frontend:
+      port: 8071
+
+kafka:
+  hosts: ["127.0.0.1:9092"]
+
+mysql:
+  user: root
+  host: 127.0.0.1
+  port: 3306
+  password: root
+  database: test
+
+log:
+  #使用什么样的日志实例 single/rotate/console/custom
+  driver: rotate
+  #格式
+  formatter: text
+  #设置日志级别
+  level: info
+  #日志目录
+  folder: logs
+  #日志文件
+  file: custom.log
+  #时间格式
+  date_format:
+  # 切割相关 数量、大小、最大生存时间、切割时间点，其它可以查看库源码提供的options的withXXX方法
+  rotate_count:
+  rotate_size:
+  max_age:
+  rotate_time:
