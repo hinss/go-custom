@@ -92,14 +92,14 @@ var newCommand = &cobra.Command{
 			}
 			if version != "" {
 				// 确认版本是否正确
-				release, _, err = client.Repositories.GetReleaseByTag(context.Background(), "hins", "notes-web", version)
+				release, _, err = client.Repositories.GetReleaseByTag(context.Background(), "hinss", "go-custom", version)
 				if err != nil || release == nil {
 					fmt.Println("版本不存在，创建应用失败，请参考 https://github.com/hinss/go-custom/releases")
 					return nil
 				}
 			}
 			if version == "" {
-				release, _, err = client.Repositories.GetLatestRelease(context.Background(), "hins", "notes-web")
+				release, _, err = client.Repositories.GetLatestRelease(context.Background(), "hinss", "go-custom")
 				version = release.GetTagName()
 			}
 		}
@@ -133,7 +133,7 @@ var newCommand = &cobra.Command{
 		}
 		for _, fInfo := range fInfos {
 			// 找到解压后的文件夹
-			if fInfo.IsDir() && strings.Contains(fInfo.Name(), "notes-web-master") {
+			if fInfo.IsDir() && strings.Contains(fInfo.Name(), "hinss-go-custom") {
 				if err := os.Rename(filepath.Join(templateFolder, fInfo.Name()), folder); err != nil {
 					return err
 				}
