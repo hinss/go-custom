@@ -3,8 +3,6 @@ package custom
 import (
 	"github.com/hinss/go-custom/framework/gin"
 	"github.com/hinss/go-custom/framework/middleware"
-	"os"
-	"path"
 )
 
 // NewHttpEngine 创建了一个绑定了路由的Web引擎
@@ -14,10 +12,6 @@ func NewHttpEngine() (*gin.Engine, error) {
 	// 默认启动一个Web引擎
 	r := gin.Default()
 
-	// 注册中间件
-	rootWd, _ := os.Getwd()
-	rootPath := path.Join(rootWd, "static")
-	r.Use(middleware.ServeRoot("/", rootPath))
 	r.Use(gin.Recovery())
 	r.Use(middleware.Cost())
 	// 业务绑定路由操作

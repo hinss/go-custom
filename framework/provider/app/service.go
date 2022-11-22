@@ -2,13 +2,13 @@ package app
 
 import (
 	"flag"
+	"github.com/google/uuid"
 	"github.com/hinss/go-custom/framework"
 	"github.com/hinss/go-custom/framework/util"
-	"github.com/google/uuid"
 	"github.com/pkg/errors"
 	"path/filepath"
 )
-
+var appName = "custom"
 type CustomApp struct {
 	container  framework.Container // 服务容器
 	baseFolder string              // 基础路径
@@ -133,7 +133,7 @@ func (c CustomApp) AppFolder() string {
 	if val, ok := c.configMap["app"]; ok {
 		return val
 	}
-	return filepath.Join(c.BaseFolder(), "internal")
+	return filepath.Join(c.BaseFolder(), "internal", appName)
 }
 
 

@@ -21,6 +21,8 @@ func AddKernelCommands(root *cobra.Command) {
 	root.AddCommand(initProviderCommand())
 	// middleware 迁移命令
 	root.AddCommand(initMiddlewareCommand())
+	// swagger 命令
+	root.AddCommand(initSwaggerCommand())
 
 
 }
