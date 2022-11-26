@@ -9,6 +9,7 @@ import (
 	"github.com/hinss/go-custom/framework/provider/kernel"
 	"github.com/hinss/go-custom/framework/provider/log"
 	"github.com/hinss/go-custom/framework/provider/log/services"
+	"github.com/hinss/go-custom/framework/provider/orm"
 	"github.com/hinss/go-custom/internal/custom/console"
 	"os"
 )
@@ -31,6 +32,8 @@ func NewApp() {
 	// 绑定 日志服务提供者
 	container.Bind(&log.CustomLogServiceProvider{})
 	Logger = container.MustMake(contract.LogKey).(*services.CustomRotateLog)
+	// 初始化orm服务提供者
+	container.Bind(&orm.GormProvider{})
 
 	// 将HTTP引擎初始化,并且作为服务提供者绑定到服务容器中
 	if engine, err := NewHttpEngine(); err == nil {

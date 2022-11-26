@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/gohade/hade/framework/gin"
+	"github.com/hinss/go-custom/framework/gin"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/swaggo/gin-swagger/swaggerFiles"

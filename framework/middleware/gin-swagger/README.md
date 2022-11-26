@@ -40,7 +40,7 @@ import "github.com/swaggo/files" // swagger embed files
 package main
 
 import (
-	"github.com/gohade/hade/framework/gin"
+	"github.com/hinss/go-custom/framework/gin"
 	swaggerFiles "github.com/swaggo/files"
 	"github.com/swaggo/gin-swagger"
 	
@@ -83,7 +83,7 @@ func main() {
 package main
 
 import (
-	"github.com/gohade/hade/framework/gin"
+	"github.com/hinss/go-custom/framework/gin"
 	swaggerFiles "github.com/swaggo/files"
 	"github.com/swaggo/gin-swagger"
     
