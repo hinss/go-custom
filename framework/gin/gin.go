@@ -232,7 +232,7 @@ func (engine *Engine) Handler() http.Handler {
 func (engine *Engine) allocateContext() *Context {
 	v := make(Params, 0, engine.maxParams)
 	skippedNodes := make([]skippedNode, 0, engine.maxSections)
-	return &Context{engine: engine, params: &v, skippedNodes: &skippedNodes}
+	return &Context{engine: engine, params: &v, skippedNodes: &skippedNodes, container: engine.Container}
 }
 
 // Delims sets template left and right delims and returns an Engine instance.
