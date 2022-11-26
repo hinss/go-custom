@@ -1,6 +1,6 @@
 module github.com/hinss/go-custom
 
-go 1.17
+go 1.18
 
 require (
 	gitee.com/ChengHoHins/component-base v0.0.0-20221006044702-90ef564b8edb
