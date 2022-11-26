@@ -1,16 +1,16 @@
 package orm
 
 import (
-	"github.com/gohade/hade/framework/contract"
-	"github.com/gohade/hade/framework/provider/config"
-	tests "github.com/gohade/hade/test"
+	"github.com/hinss/go-custom/framework/contract"
+	"github.com/hinss/go-custom/framework/provider/config"
+	tests "github.com/hinss/go-custom/test"
 	. "github.com/smartystreets/goconvey/convey"
 	"testing"
 )
 
-func TestHadeConfig_Load(t *testing.T) {
+func TestCustomConfig_Load(t *testing.T) {
 	container := tests.InitBaseContainer()
-	container.Bind(&config.HadeConfigProvider{})
+	container.Bind(&config.CustomConfigProvider{})
 
 	Convey("test config", t, func() {
 		configService := container.MustMake(contract.ConfigKey).(contract.Config)

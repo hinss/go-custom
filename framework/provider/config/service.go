@@ -95,7 +95,7 @@ func NewCustomConfig(params ...interface{}) (interface{}, error) {
 	}
 
 	// 实例化
-	hadeConf := &CustomConfig{
+	CustomConf := &CustomConfig{
 		c:        container,
 		folder:   envFolder,
 		envMaps:  envMaps,
@@ -112,7 +112,7 @@ func NewCustomConfig(params ...interface{}) (interface{}, error) {
 	}
 	for _, file := range files {
 		fileName := file.Name()
-		err := hadeConf.loadConfigFile(envFolder, fileName)
+		err := CustomConf.loadConfigFile(envFolder, fileName)
 		if err != nil {
 			log.Println(err)
 			continue
@@ -150,15 +150,15 @@ func NewCustomConfig(params ...interface{}) (interface{}, error) {
 
 					if ev.Op&fsnotify.Create == fsnotify.Create {
 						log.Println("创建文件 : ", ev.Name)
-						hadeConf.loadConfigFile(folder, fileName)
+						CustomConf.loadConfigFile(folder, fileName)
 					}
 					if ev.Op&fsnotify.Write == fsnotify.Write {
 						log.Println("写入文件 : ", ev.Name)
-						hadeConf.loadConfigFile(folder, fileName)
+						CustomConf.loadConfigFile(folder, fileName)
 					}
 					if ev.Op&fsnotify.Remove == fsnotify.Remove {
 						log.Println("删除文件 : ", ev.Name)
-						hadeConf.removeConfigFile(folder, fileName)
+						CustomConf.removeConfigFile(folder, fileName)
 					}
 				}
 			case err := <-watch.Errors:
@@ -170,7 +170,7 @@ func NewCustomConfig(params ...interface{}) (interface{}, error) {
 		}
 	}()
 
-	return hadeConf, nil
+	return CustomConf, nil
 }
 
 // replace 表示使用环境变量maps替换context中的env(xxx)的环境变量

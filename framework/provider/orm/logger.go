@@ -9,7 +9,7 @@ import (
 
 // OrmLogger orm的日志实现类, 实现了gorm.Logger.Interface
 type OrmLogger struct {
-	logger contract.Log // 有一个logger对象存放hade的log服务
+	logger contract.Log // 有一个logger对象存放Custom的log服务
 }
 
 // NewOrmLogger 初始化一个ormLogger,
@@ -17,12 +17,12 @@ func NewOrmLogger(logger contract.Log) *OrmLogger {
 	return &OrmLogger{logger: logger}
 }
 
-// LogMode 什么都不实现，日志级别完全依赖hade的日志定义
+// LogMode 什么都不实现，日志级别完全依赖Custom的日志定义
 func (o *OrmLogger) LogMode(level logger.LogLevel) logger.Interface {
 	return o
 }
 
-// Info 对接hade的info输出
+// Info 对接Custom的info输出
 func (o *OrmLogger) Info(ctx context.Context, s string, i ...interface{}) {
 	fields := map[string]interface{}{
 		"fields": i,
@@ -30,7 +30,7 @@ func (o *OrmLogger) Info(ctx context.Context, s string, i ...interface{}) {
 	o.logger.Info(ctx, s, fields)
 }
 
-// Warn 对接hade的Warn输出
+// Warn 对接Custom的Warn输出
 func (o *OrmLogger) Warn(ctx context.Context, s string, i ...interface{}) {
 	fields := map[string]interface{}{
 		"fields": i,
@@ -38,7 +38,7 @@ func (o *OrmLogger) Warn(ctx context.Context, s string, i ...interface{}) {
 	o.logger.Warn(ctx, s, fields)
 }
 
-// Error 对接hade的Error输出
+// Error 对接Custom的Error输出
 func (o *OrmLogger) Error(ctx context.Context, s string, i ...interface{}) {
 	fields := map[string]interface{}{
 		"fields": i,
@@ -46,7 +46,7 @@ func (o *OrmLogger) Error(ctx context.Context, s string, i ...interface{}) {
 	o.logger.Error(ctx, s, fields)
 }
 
-// Trace 对接hade的Trace输出
+// Trace 对接Custom的Trace输出
 func (o *OrmLogger) Trace(ctx context.Context, begin time.Time, fc func() (sql string, rowsAffected int64), err error) {
 	sql, rows := fc()
 	elapsed := time.Since(begin)

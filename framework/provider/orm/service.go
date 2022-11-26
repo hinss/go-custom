@@ -14,7 +14,7 @@ import (
     "time"
 )
 
-// CustorGorm 代表hade框架的orm实现
+// CustorGorm 代表Custom框架的orm实现
 type CustorGorm struct {
     container framework.Container // 服务容器
     dbs       map[string]*gorm.DB // key为dsn, value为gorm.DB（连接池）
